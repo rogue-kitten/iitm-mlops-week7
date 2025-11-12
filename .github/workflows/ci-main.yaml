@@ -105,9 +105,9 @@ jobs:
       - name: Run Test 1 (Autoscaling)
         run: |
           echo "--- Starting autoscaling test (60 seconds) ---"
-          echo "--- This test uses 100 concurrent connections ---"
+          echo "--- This test uses 1000 concurrent connections ---"
 
-          wrk -t4 -c100 -d60s "${{ env.SERVICE_URL }}/predict/" -s ./wrk_script.lua &
+          wrk -t4 -c1000 -d60s "${{ env.SERVICE_URL }}/predict/" -s ./wrk_script.lua &
           WRK_PID=$!
 
           # Observe the HPA and pod count while wrk is running
